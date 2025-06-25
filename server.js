@@ -6,12 +6,10 @@ require('dotenv').config();
 const { createClient } = require('@supabase/supabase-js');
 const path =require('path');
 
+// const cors = require("cors");
 const cors = require("cors");
-app.use(cors({
-    origin: "https://music-player-sumit.vercel.app", // your Vercel frontend URL
-    methods: ["GET", "POST"],
-    credentials: true
-}));
+app.use(cors());
+
 app.use(express.static(path.join(__dirname,'server','public')));
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
